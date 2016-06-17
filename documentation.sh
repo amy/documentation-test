@@ -21,7 +21,7 @@ if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then
   git clone $REPO out
   cd out
 
-  ./vendor/phpdocumentor/phpdocumentor/bin/phpdoc -d ../documentation-test -t ./docs --template="xml" --ignore="vendor/*"
+  ./vendor/phpdocumentor/phpdocumentor/bin/phpdoc -d ../out -t ./docs --template="xml" --ignore="vendor/*"
   ./vendor/bin/phpdocmd ./docs/structure.xml docs/
   #git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
   #cd ..
