@@ -5,7 +5,7 @@ IFS=$'\n\t'
 
 function generateDocs {
 
-  ./vendor/phpdocumentor/phpdocumentor/bin/phpdoc -d ../documentation-test -t ./docs --template="xml" --ignore="vendor/*"
+  ./vendor/phpdocumentor/phpdocumentor/bin/phpdoc -d ../out -t ./docs --template="xml" --ignore="vendor/*"
   ./vendor/bin/phpdocmd ./docs/structure.xml docs/
 
 }
