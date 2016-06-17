@@ -1,0 +1,31 @@
+{
+  "name": "behance/nbd.php-gatekeeper",
+  "description": "Behance Gatekeeper",
+  "license": "MIT",
+  "require": {
+    "php": ">=5.6"
+  },
+  "require-dev": {
+    "behance/php-sniffs": "~2.1",
+    "phpunit/phpunit": "~5.0",
+    "phpdocumentor/phpdocumentor": "2.*",
+    "evert/phpdoc-md" : "~0.0.7",
+    "graphp/graphviz": "~0.2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Behance\\NBD\\Gatekeeper\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Behance\\NBD\\Gatekeeper\\Test\\": "tests/lib/"
+    }
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "git@github.com:behance/php-sniffs.git"
+    }
+  ]
+}

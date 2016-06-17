@@ -1,0 +1,29 @@
+{
+    "name": "behance/php-sniffs",
+    "description": "Behance PHPCS rules",
+    "minimum-stability": "stable",
+    "require": {
+        "squizlabs/php_codesniffer": "^2.5.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~3.7"
+    },
+    "autoload": {
+        "classmap": ["tests"]
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kevin Ran",
+            "email": "kran@adobe.com"
+        },
+        {
+            "name": "Mike Sherov",
+            "email": "sherov@adobe.com"
+        },
+        {
+            "name": "Jim DeLois",
+            "email": "delois@adobe.com"
+        }
+    ]
+}

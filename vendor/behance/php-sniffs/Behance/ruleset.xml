@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<ruleset name="Behance">
+
+  <description>Behance Coding Standards</description>
+
+  <rule ref="PSR1">
+    <exclude name="PSR1.Classes.ClassDeclaration.MissingNamespace"/>
+    <exclude name="PSR1.Methods.CamelCapsMethodName.NotCamelCaps"/>
+  </rule>
+
+  <rule ref="PSR2">
+    <exclude name="PSR2.Classes.ClassDeclaration.OpenBraceNewLine"/>
+    <exclude name="PSR2.Classes.ClassDeclaration.CloseBraceAfterBody"/>
+    <exclude name="PSR2.Classes.ClassDeclaration.CloseBraceSameLine"/>
+    <exclude name="PSR2.Classes.PropertyDeclaration.Underscore"/>
+    <exclude name="PSR2.Methods.FunctionCallSignature.SpaceAfterOpenBracket"/>
+    <exclude name="PSR2.Methods.FunctionCallSignature.SpaceBeforeCloseBracket"/>
+    <exclude name="PSR2.Methods.FunctionCallSignature.ContentAfterOpenBracket"/>
+    <exclude name="PSR2.Methods.FunctionCallSignature.CloseBracketLine"/>
+    <exclude name="PSR2.Methods.MethodDeclaration.Underscore"/>
+    <exclude name="PSR2.ControlStructures.ControlStructureSpacing.SpacingAfterOpenBrace"/>
+    <exclude name="PSR2.ControlStructures.ControlStructureSpacing.SpaceBeforeCloseBrace"/>
+    <exclude name="PSR2.Classes.PropertyDeclaration.Multiple"/>
+    <exclude name="PSR2.ControlStructures.SwitchDeclaration.BodyOnNextLineCASE"/>
+    <exclude name="PSR2.ControlStructures.SwitchDeclaration.BodyOnNextLineDEFAULT"/>
+
+    <!-- TODO: Reconsider for inclusion -->
+    <exclude name="PSR2.Namespaces.NamespaceDeclaration.BlankLineAfter"/>
+
+    <!--
+      Excluded because this incorrectly reports properties that come after a
+      onevar style declaration of a class property that is a multiline array
+      TODO: patch phpcs proper
+    -->
+    <exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect"/>
+
+    <!-- Generic standards that are inherited via PSR2 -->
+    <exclude name="Generic.ControlStructures.InlineControlStructure"/>
+    <exclude name="Generic.Files.LineLength"/>
+    <exclude name="Generic.Functions.FunctionCallArgumentSpacing"/>
+
+    <!-- Squiz standards that are inherited via PSR2 -->
+    <exclude name="Squiz.ControlStructures.ControlSignature"/>
+    <exclude name="Squiz.ControlStructures.ForEachLoopDeclaration.SpaceAfterOpen"/>
+    <exclude name="Squiz.ControlStructures.ForEachLoopDeclaration.SpaceBeforeClose"/>
+    <exclude name="Squiz.Functions.FunctionDeclarationArgumentSpacing.SpacingBeforeClose"/>
+    <exclude name="Squiz.Functions.FunctionDeclarationArgumentSpacing.SpacingAfterOpen"/>
+    <exclude name="Squiz.Functions.FunctionDeclarationArgumentSpacing.SpacingAfterOpenHint"/>
+    <exclude name="Squiz.Functions.MultiLineFunctionDeclaration.BraceOnSameLine"/>
+    <exclude name="Squiz.Classes.ValidClassName.NotCamelCaps"/>
+    <exclude name="Squiz.Classes.ClassDeclaration.CloseBraceSameLine"/>
+    <exclude name="Squiz.ControlStructures.ForLoopDeclaration.SpacingAfterOpen"/>
+    <exclude name="Squiz.ControlStructures.ForLoopDeclaration.SpacingBeforeClose"/>
+    <exclude name="Squiz.WhiteSpace.ControlStructureSpacing"/>
+    <exclude name="Squiz.WhiteSpace.ScopeClosingBrace.ContentBefore"/>
+    <exclude name="Squiz.Functions.MultiLineFunctionDeclaration.SpaceAfterFunction"/>
+  </rule>
+
+  <rule ref="PSR2.ControlStructures.SwitchDeclaration">
+    <properties>
+      <property name="indent" value="2"/>
+    </properties>
+  </rule>
+
+  <rule ref="Generic.WhiteSpace.ScopeIndent">
+    <properties>
+      <property name="indent" value="2"/>
+    </properties>
+  </rule>
+
+  <!-- Custom standards -->
+  <rule ref="Behance.Arrays.ArrayBracketSpacing"/>
+  <rule ref="Behance.Arrays.ArrayDeclaration">
+    <properties>
+      <property name="indent" value="2"/>
+      <property name="elementIndentLevel" value="2"/>
+    </properties>
+  </rule>
+  <rule ref="Behance.Arrays.ShortHandArrayOnly"/>
+  <rule ref="Behance.Classes.ClassDeclaration"/>
+  <rule ref="Behance.Comments.TrailingComment"/>
+  <rule ref="Behance.Comments.DisallowHashComments"/>
+  <rule ref="Behance.ControlStructures.ControlStructureSpacing"/>
+  <!-- InlineControlStructure is a copy of the Generic, but also checks elseif statements -->
+  <rule ref="Behance.ControlStructures.InlineControlStructure"/>
+  <rule ref="Behance.Functions.FunctionCallArgumentSpacing"/>
+  <rule ref="Behance.Functions.FunctionDeclaration"/>
+
+  <!-- It turns out that this rule is/was not ready for primetime. Sidelining for now. -->
+  <rule ref="Behance.Gotchas.DefaultLogger">
+    <exclude name="Behance.Gotchas.DefaultLogger"/>
+  </rule>
+
+</ruleset>

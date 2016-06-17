@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project title="API Documentation" version="2.8.5">
+  <partials/>
+  <file path="Gatekeeper.php" generated-path="Gatekeeper.html" hash="462503407112c088140baf4f1c0479f8" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="Behance\NBD\Gatekeeper" line="9" package="Default">
+      <extends/>
+      <name>Gatekeeper</name>
+      <full_name>\Behance\NBD\Gatekeeper\Gatekeeper</full_name>
+      <docblock line="9">
+        <description>blah 1</description>
+        <long-description></long-description>
+        <tag name="package" line="9" description="Default"/>
+      </docblock>
+      <property static="false" visibility="private" namespace="Behance\NBD\Gatekeeper" line="15" package="Default">
+        <name>$_ruleset_provider</name>
+        <full_name>\Behance\NBD\Gatekeeper\Gatekeeper::_ruleset_provider</full_name>
+        <default></default>
+        <docblock line="15">
+          <description>blah 2</description>
+          <long-description></long-description>
+          <tag name="var" line="15" description="" type="\Behance\NBD\Gatekeeper\RulesetProviderInterface" variable="">
+            <type>\Behance\NBD\Gatekeeper\RulesetProviderInterface</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Behance\NBD\Gatekeeper" line="22" package="Default">
+        <name>__construct</name>
+        <full_name>\Behance\NBD\Gatekeeper\Gatekeeper::__construct()</full_name>
+        <docblock line="22">
+          <description>blah 3</description>
+          <long-description></long-description>
+          <tag name="param" line="22" description="" type="\Behance\NBD\Gatekeeper\RulesetProviderInterface" variable="$ruleset_provider">
+            <type>\Behance\NBD\Gatekeeper\RulesetProviderInterface</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$ruleset_provider</name>
+          <default></default>
+          <type>\Behance\NBD\Gatekeeper\RulesetProviderInterface</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Behance\NBD\Gatekeeper" line="33" package="Default">
+        <name>canAccess</name>
+        <full_name>\Behance\NBD\Gatekeeper\Gatekeeper::canAccess()</full_name>
+        <docblock line="33">
+          <description></description>
+          <long-description></long-description>
+          <tag name="param" line="33" description="" type="string" variable="$feature">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="33" description="" type="string|array|null" variable="$identifier">
+            <type>string</type>
+            <type>array</type>
+            <type>null</type>
+          </tag>
+          <tag name="return" line="33" description="" type="boolean">
+            <type>boolean</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$feature</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$identifier</name>
+          <default>array(null)</default>
+          <type>string|array|null</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="33" code="PPC:ERR-50008">No summary for method canAccess()</error>
+    </parse_markers>
+    <source>eJyVUsFOwzAMvecr3qGHbmKqgONgjAkJcUGIK0OVF9w1IkurJJ2E2P6drC20Y5sEPUSO/fyen9OrmzIvhTC0YleSZMw4JyN5/ji7m9+T53fmku1YCJEMhwJDLDTlOA9RIqQm59Ch8CkEUOPwjbxo4umaLObHyefPlWbH/skWa/XG9sF4tlkYpm5NwllatQ5wRKltoGnZYseHipdNjFa4JEurf0sj+q3UDVMttJLIKiO9KgzSVBbGeVtJH+PvfBg06wIinys3mhx4w/VhV+13iyTpy+7toDWMUFJmiShj8pXlY8UNWUsfG1NpjSiwG68y1TrF1HLoM1gUhT7pXZK5lZKdi3+EzvpUwcILav7Xnt+9elwPMeglxw0sKyyTzBHvNZBD5MLsmtNedseN+lPZruHERkeTJfv2ibqJMRhN+kaO0XcCQLuYsHoet8mtaE7Rq2ekHXfv9aMgRH3vfkLxBfDXHfk=</source>
+  </file>
+  <package name="Default" full_name="Default"/>
+  <package name="global" full_name="global"/>
+  <namespace name="Behance" full_name="Behance">
+    <namespace name="NBD" full_name="Behance\NBD">
+      <namespace name="Gatekeeper" full_name="Behance\NBD\Gatekeeper"/>
+    </namespace>
+  </namespace>
+  <deprecated count="0"/>
+</project>
