@@ -52,7 +52,7 @@ if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then
   ssh-add id_rsa_travisTest
 
   # Now that we're all set up, we can push.
-  git push -fq $SSH_REPO $TARGET_BRANCH
+  git push $SSH_REPO $TARGET_BRANCH
   #git push -fq origin $TARGET_BRANCH
 
 
