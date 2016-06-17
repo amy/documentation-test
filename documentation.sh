@@ -12,8 +12,6 @@ function generateDocs {
 
 if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then
 
-  generateDocs
-
   TARGET_BRANCH="master"
 
   REPO=`git config remote.origin.url`
@@ -22,6 +20,8 @@ if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then
 
   git clone $REPO out
   cd out
+
+  generateDocs
   #git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
   #cd ..
 
