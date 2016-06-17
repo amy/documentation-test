@@ -48,6 +48,8 @@ if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then
   eval `ssh-agent -s`
   ssh-add deploy_key
 
+  $TARGET_BRANCH="master"
+
   # Now that we're all set up, we can push.
   git push $SSH_REPO $TARGET_BRANCH
 
