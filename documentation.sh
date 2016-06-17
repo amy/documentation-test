@@ -20,11 +20,13 @@ if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then
   SSH_REPO=${REPO/https:\/\/github.com\//git@github.com:}
   SHA=`git rev-parse --verify HEAD`
 
-  #git clone $REPO out
-  #cd out
+  git clone $REPO out
+  cd out
   #git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
   #cd ..
-#
+
+  #rm -rf out/**/* || exit 0
+
   #cd out
   git config user.name "Travis CI"
   git config user.email "$COMMIT_AUTHOR_EMAIL"
