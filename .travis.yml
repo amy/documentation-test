@@ -1,4 +1,4 @@
-language: generic # don't install any environment
+language: php # don't install any environment
 
 script: bash ./documentation.sh
 env:
