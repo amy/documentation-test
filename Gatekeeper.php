@@ -11,6 +11,7 @@ class Gatekeeper {
    */
   private $_ruleset_provider;
 
+
   /**
    * @param \Behance\NBD\Gatekeeper\RulesetProviderInterface $ruleset_provider
    */
