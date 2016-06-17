@@ -7,7 +7,7 @@ use Behance\NBD\Gatekeeper\Rules\PercentageRule;
 class Gatekeeper {
 
   /**
-   * @var \Behance\NBD\Gatekeeper\RulesetProviderInterface
+   * @var \Behance\NBD\Gatekeeper\RulesetProviderInterfaceTESTTESTTEST
    */
   private $_ruleset_provider;
 
