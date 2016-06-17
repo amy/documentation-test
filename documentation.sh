@@ -46,9 +46,9 @@ if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then
   ENCRYPTED_KEY=${!ENCRYPTED_KEY_VAR}
   ENCRYPTED_IV=${!ENCRYPTED_IV_VAR}
   openssl aes-256-cbc -K $ENCRYPTED_KEY -iv $ENCRYPTED_IV -in id_rsa_travisTest.enc -out id_rsa_travisTest -d
-  chmod 600 deploy_key
+  chmod 600 id_rsa_travisTest
   eval `ssh-agent -s`
-  ssh-add deploy_key
+  ssh-add id_rsa_travisTest
 
   # Now that we're all set up, we can push.
   git push $SSH_REPO $TARGET_BRANCH
