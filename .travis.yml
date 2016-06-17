@@ -1,6 +1,6 @@
 language: generic # don't install any environment
 
-script: bash ./deploy.sh
+script: bash ./documentation.sh
 env:
   global:
   - ENCRYPTION_LABEL: "00bdc8325a5f"
