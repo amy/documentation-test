@@ -40,7 +40,6 @@ if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then
   git --no-pager diff
   git add .
   git commit -m "Deploy to GitHub Pages: ${SHA}"
-  git --no-pager show HEAD
 
   # Get the deploy key by using Travis's stored variables to decrypt deploy_key.enc
   ENCRYPTED_KEY_VAR="encrypted_${ENCRYPTION_LABEL}_key"
@@ -53,7 +52,8 @@ if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then
   ssh-add id_rsa_travisTest
 
   # Now that we're all set up, we can push.
-  git push $SSH_REPO $TARGET_BRANCH
+  #git push -fq $SSH_REPO $TARGET_BRANCH
+  git push -fq origin $TARGET_BRANCH
 
 
 fi
