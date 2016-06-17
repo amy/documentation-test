@@ -14,6 +14,8 @@ if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then
 
   generateDocs
 
+  TARGET_BRANCH="master"
+
   REPO=`git config remote.origin.url`
   SSH_REPO=${REPO/https:\/\/github.com\//git@github.com:}
   SHA=`git rev-parse --verify HEAD`
@@ -47,8 +49,6 @@ if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then
   chmod 600 deploy_key
   eval `ssh-agent -s`
   ssh-add deploy_key
-
-  $TARGET_BRANCH="master"
 
   # Now that we're all set up, we can push.
   git push $SSH_REPO $TARGET_BRANCH
