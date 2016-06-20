@@ -42,7 +42,8 @@ if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then
   # Commit the "changes", i.e. the new version.
   # The delta will show diffs between new and old versions.
   git --no-pager diff
-  git add docs/
+  git status
+  git add docs
   git commit -m "Deploy to GitHub Pages: ${SHA}"
 
   # Get the deploy key by using Travis's stored variables to decrypt deploy_key.enc
