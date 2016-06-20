@@ -22,6 +22,8 @@ if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then
   git clone $REPO out
   cd out
 
+
+
   ./vendor/phpdocumentor/phpdocumentor/bin/phpdoc -d ../out -t ./docs --template="xml" --ignore="vendor/*"
   ./vendor/bin/phpdocmd ./docs/structure.xml docs/
   #git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
@@ -46,8 +48,8 @@ if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then
   git add docs
   git status
   git commit -m "Deploy to GitHub Pages: ${SHA}"
-  git fetch
-  git pull
+  git fetch git@github.com:amy/documentation-test.git
+  git pull git@github.com:amy/documentation-test.git
 
   # Get the deploy key by using Travis's stored variables to decrypt deploy_key.enc
   ENCRYPTED_KEY_VAR="encrypted_${ENCRYPTION_LABEL}_key"
