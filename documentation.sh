@@ -5,7 +5,7 @@ IFS=$'\n\t'
 
 function generateDocs {
 
-  ./vendor/phpdocumentor/phpdocumentor/bin/phpdoc -d ../out -t ./docs --template="xml" --ignore="vendor/*"
+  ./vendor/phpdocumentor/phpdocumentor/bin/phpdoc -d ../$1 -t ./docs --template="xml" --ignore="vendor/*"
   ./vendor/bin/phpdocmd ./docs/structure.xml docs/
 
 }
@@ -13,19 +13,20 @@ function generateDocs {
 if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then
 
   TARGET_BRANCH="master"
+  SOURCE_REPO="source"
+  SINK_REPO="sink"
 
   REPO=`git config remote.origin.url`
   #SSH_REPO=${REPO/https:\/\/github.com\//git@github.com:}
-  SSH_REPO=git@github.com:amy/anotherTest.git
+  #SSH_REPO=git@github.com:amy/anotherTest.git
   SHA=`git rev-parse --verify HEAD`
 
-  git clone $REPO out
-  cd out
+  git clone $REPO $SOURCE_REPO
+  cd $SOURCE_REPO
 
 
 
-  ./vendor/phpdocumentor/phpdocumentor/bin/phpdoc -d ../out -t ./docs --template="xml" --ignore="vendor/*"
-  ./vendor/bin/phpdocmd ./docs/structure.xml docs/
+  generateDocs $SOURCE_REPO
   #git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
   #cd ..
 
@@ -44,23 +45,31 @@ if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then
   # Commit the "changes", i.e. the new version.
   # The delta will show diffs between new and old versions.
   git --no-pager diff
-  git status
   git add docs
-  git status
   git commit -m "Deploy to GitHub Pages: ${SHA}"
+
+  cd ..
+
+  mkdir SINK_REPO
+
+  git clone git@github.com:amy/anotherTest.git $SINK_REPO
+  cp $SOURCE_REPO/docs $SINK_REPO
+  cd $SINK_REPO
+  git add .
+  git commit -m "updated docs"
 
   # Get the deploy key by using Travis's stored variables to decrypt deploy_key.enc
   ENCRYPTED_KEY_VAR="encrypted_${ENCRYPTION_LABEL}_key"
   ENCRYPTED_IV_VAR="encrypted_${ENCRYPTION_LABEL}_iv"
   ENCRYPTED_KEY=${!ENCRYPTED_KEY_VAR}
   ENCRYPTED_IV=${!ENCRYPTED_IV_VAR}
-  openssl aes-256-cbc -K $ENCRYPTED_KEY -iv $ENCRYPTED_IV -in id_rsa_travisTest.enc -out id_rsa_travisTest -d
+  openssl aes-256-cbc -K $ENCRYPTED_KEY -iv $ENCRYPTED_IV -in ../id_rsa_travisTest.enc -out id_rsa_travisTest -d
   chmod 600 id_rsa_travisTest
   eval `ssh-agent -s`
   ssh-add id_rsa_travisTest
 
   # Now that we're all set up, we can push.
-  git push --force $SSH_REPO $TARGET_BRANCH
+  git push origin HEAD
   #git push -fq origin $TARGET_BRANCH
 
 
