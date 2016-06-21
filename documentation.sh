@@ -1,6 +1,6 @@
 #!/bin/bash
 #set -ev
-set -euox pipefail
+set -euxo pipefail
 IFS=$'\n\t'
 
 function generateDocs {
@@ -10,7 +10,23 @@ function generateDocs {
 
 }
 
+function loadSSHKey {
+
+  # Get the deploy key by using Travis's stored variables to decrypt deploy_key.enc
+  ENCRYPTED_KEY_VAR="encrypted_${ENCRYPTION_LABEL}_key"
+  ENCRYPTED_IV_VAR="encrypted_${ENCRYPTION_LABEL}_iv"
+  ENCRYPTED_KEY=${!ENCRYPTED_KEY_VAR}
+  ENCRYPTED_IV=${!ENCRYPTED_IV_VAR}
+  openssl aes-256-cbc -K $ENCRYPTED_KEY -iv $ENCRYPTED_IV -in id_rsa_travisTest.enc -out id_rsa_travisTest -d
+  chmod 600 id_rsa_travisTest
+  eval `ssh-agent -s`
+  ssh-add id_rsa_travisTest
+
+}
+
 if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then
+
+  loadSSHKey
 
   TARGET_BRANCH="master"
   SOURCE_REPO="source"
@@ -44,7 +60,8 @@ if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then
 
   # Commit the "changes", i.e. the new version.
   # The delta will show diffs between new and old versions.
-  git --no-pager diff
+  #git --no-pager diff
+  git diff --exit-code
   git add docs
   git commit -m "Deploy to GitHub Pages: ${SHA}"
 
@@ -57,16 +74,6 @@ if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then
   cd $SINK_REPO
   git add .
   git commit -m "updated docs"
-
-  # Get the deploy key by using Travis's stored variables to decrypt deploy_key.enc
-  ENCRYPTED_KEY_VAR="encrypted_${ENCRYPTION_LABEL}_key"
-  ENCRYPTED_IV_VAR="encrypted_${ENCRYPTION_LABEL}_iv"
-  ENCRYPTED_KEY=${!ENCRYPTED_KEY_VAR}
-  ENCRYPTED_IV=${!ENCRYPTED_IV_VAR}
-  openssl aes-256-cbc -K $ENCRYPTED_KEY -iv $ENCRYPTED_IV -in ../id_rsa_travisTest.enc -out id_rsa_travisTest -d
-  chmod 600 id_rsa_travisTest
-  eval `ssh-agent -s`
-  ssh-add id_rsa_travisTest
 
   # Now that we're all set up, we can push.
   git push origin HEAD
