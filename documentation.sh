@@ -70,6 +70,10 @@ if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then
   mkdir SINK_REPO
 
   git clone git@github.com:amy/anotherTest.git $SINK_REPO
+
+  git config user.name "Travis CI"
+  git config user.email "$COMMIT_AUTHOR_EMAIL"
+
   cp -a $SOURCE_REPO/docs $SINK_REPO
   cd $SINK_REPO
   git add .
