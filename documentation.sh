@@ -70,7 +70,7 @@ if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then
   mkdir SINK_REPO
 
   git clone git@github.com:amy/anotherTest.git $SINK_REPO
-  cp $SOURCE_REPO/docs $SINK_REPO
+  cp -a $SOURCE_REPO/docs $SINK_REPO
   cd $SINK_REPO
   git add .
   git commit -m "updated docs"
